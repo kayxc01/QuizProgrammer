@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: white;
+  overflow: hidden;
+}
+
+/* Tela inicial */
+#entrar-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000dd;
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 9999;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+#entrar-screen:hover {
+  background: #000000ff;
+}
+
+/* Vídeo de fundo */
+#video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  background: black;
+  filter: brightness(0.5) contrast(1.1);
+  transition: filter 0.5s ease;
+}
+
+/* Wrapper */
+.container-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+/* Container com neon e fundo escuro */
+.container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 2rem 2.5rem;
+  border-radius: 20px;
+  box-shadow:
+    0 0 15px rgba(255, 166, 0, 0.7),
+    0 0 30px rgba(255, 174, 0, 0.5),
+    0 0 50px rgba(255, 187, 0, 0.3);
+  text-align: center;
+  display: none;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Imagem de perfil */
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ff9900;
+  margin-bottom: 1.2rem;
+  box-shadow:
+    0 0 10px #ff9900,
+    0 0 20px #ff9900;
+  transition: transform 0.3s ease;
+}
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+/* Nome */
+.name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.4rem;
+  margin: 0.3rem 0 1rem;
+  color: #ff9900;
+  text-shadow:
+    0 0 5px #ff9900,
+    0 0 10px #ff9900,
+    0 0 20px #ff9900,
+    0 0 40px #ff9900;
+}
+
+/* Descrição */
+.description {
+  font-size: 1.25rem;
+  margin-bottom: 1.4rem;
+  color: #ccffcc;
+  text-shadow:
+    0 0 5px #ff9900,
+    0 0 10px #ff9900;
+  font-style: italic;
+}
+
+/* Spotify */
+.spotify {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 1rem;
+  color: #ff9900;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+  font-family: 'Arial', sans-serif;
+  text-shadow:
+    0 0 3px #ff9900,
+    0 0 6px #ff9900;
+}
+.spotify img {
+  width: 28px;
+  filter: drop-shadow(0 0 2px #ff9900);
+  flex-shrink: 0;
+}
+.spotify p {
+  margin: 0;
+}
+
+/* Controles de áudio */
+.audio-controls {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 9998;
+  display: none;
+  box-shadow: 0 0 10px #ff9900;
+}
+
+#toggle-audio {
+  background-color: transparent;
+  border: 1.5px solid #ff9900;
+  color: #ff9900;
+  padding: 6px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  text-shadow: 0 0 5px #ff9900;
+}
+#toggle-audio:hover {
+  background-color: #ff9900;
+  color: black;
+  text-shadow: none;
+}
+
+#volume-slider {
+  appearance: none;
+  width: 100px;
+  height: 6px;
+  border-radius: 3px;
+  background: #ff9900;
+  cursor: pointer;
+  box-shadow: 0 0 8px #ff9900;
+}
+#volume-slider::-webkit-slider-thumb,
+#volume-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ff9900;
+  cursor: pointer;
+  border: 2px solid #ff9900;
+  box-shadow: 0 0 8px #ff9900;
+  transition: background-color 0.3s ease;
+}
+#volume-slider::-webkit-slider-thumb:hover,
+#volume-slider::-moz-range-thumb:hover {
+  background-color: #ff9900;
+}

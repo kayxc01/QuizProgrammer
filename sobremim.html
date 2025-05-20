@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Mim</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: black;
+      color: white;
+      overflow: hidden;
+    }
+
+    video.background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.4);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    .overlay h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .overlay button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #ff9900;
+      color: black;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff9900;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .content {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 350px;
+      box-shadow: 0 0 25px rgba(8, 230, 19, 0.425);
+      backdrop-filter: blur(10px);
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #ff9900;
+      margin-bottom: 20px;
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: bold;
+      color: #00ff88;
+    }
+
+    .subtitle {
+      font-style: italic;
+      font-size: 16px;
+      margin: 5px 0 20px 0;
+      color: #ccc;
+    }
+
+    .bio {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #eee;
+    }
+
+    .spotify-icon {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    .spotify-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 15px;
+      color: #1db954;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .spotify-link:hover {
+      text-decoration: underline;
+    }
+
+    .music-controls {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid #ffffff;
+      padding: 10px 15px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 10px rgba(255, 166, 0, 0.3);
+    }
+
+    .music-controls button {
+      background: #ff9900;
+      color: black;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .music-controls input[type="range"] {
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <video class="background-video" autoplay muted loop>
+    <source src="/imagem/hacking.mp4" type="video/mp4" />
+    Seu navegador não suporta vídeo.
+  </video>
+
+  <!-- Tela de entrada -->
+  <div class="overlay" id="introScreen">
+    <h1>DO YOU DREAM ELLIOT?</h1>
+    <button onclick="enterSite()">Clique para Entrar</button>
+  </div>
+
+  <div class="music-controls">
+    <button onclick="toggleMusic()">Tocar música</button>
+    <input type="range" id="volume" min="0" max="1" step="0.01" value="0.3" onchange="changeVolume(this.value)">
+  </div>
+
+  <div class="content hidden" id="mainContent">
+    <div class="card">
+      <img src="/imagem/mckevin.gif" alt="Foto de perfil" class="profile-img" />
+      <h1 class="name">Kay</h1>
+      <div class="subtitle">⚡ Future Programmer.</div>
+      <p class="bio">
+        My name is Kaiky Allan and programming is my great passion. I’m starting this journey with a lot of focus and desire to learn, because I believe that code can change the world. I want to build a future where my creativity and knowledge are part of incredible projects. This is my mission and I’m just getting started. Let’s go together!
+      </p>
+      <a class="spotify-link" href="https://open.spotify.com/user/31ixjgtsicnmgfbn3kp6kbwbh5iu?si=ee9eda32ac184759" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" class="spotify-icon">
+        Listen on Spotify
+      </a>
+    </div>
+  </div>
+
+  <audio id="backgroundMusic" loop>
+    <source src="/imagem/isabel.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    const music = document.getElementById('backgroundMusic');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+      } else {
+        music.play();
+      }
+      isPlaying = !isPlaying;
+    }
+
+    function changeVolume(val) {
+      music.volume = val;
+    }
+
+    function enterSite() {
+      document.getElementById('introScreen').classList.add('hidden');
+      document.getElementById('mainContent').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
